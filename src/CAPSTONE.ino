@@ -82,7 +82,6 @@ void setup(void)
   delay(1000);
   bno.setExtCrystalUse(true);
   pinMode(A3, OUTPUT);
-  pinMode(A3,OUTPUT);
   Serial.println("complete");
   matrix.begin();
   matrix.setTextWrap(false);
@@ -99,7 +98,8 @@ void setup(void)
   Particle.subscribe("hook-response/tempRead", tempHandler, MY_DEVICES);
   weather = Thread("name", weatherFunction);
   main = Thread("nubeds", mainFunction);
-  pinMode(A5, OUTPUT);
+  pinMode(A0, OUTPUT);
+  pinMode(A1, OUTPUT);
   pinMode(D2, OUTPUT);
   strip.begin();
   strip.show();
@@ -280,19 +280,23 @@ void timer(){
     for(int i = 0;i<54;i++){
     matrix_1.fillScreen(0);
     matrix_1.setCursor(x2, 0);
-    tone(D2, 3401, 500); //connect two to D2
-    tone(A5, 3817, 500);
-    tone(D2, 3817, 500);
-    tone(A5, 3401, 500); // connect two to A5
+    tone(A1, 3401, 500); //connect two to D2
+    tone(A0, 3817, 500);
+    tone(A1, 3817, 500);
+    tone(A0, 3401, 500); // connect two to A5
+    tone(D2, 2696, 500);
+    tone(D2, 1234, 500);
     matrix_1.print(F("Time's Up   "));
     if(--x2 < -36) {
         x2 = matrix_1.width();
         matrix_1.setTextColor(matrix_1.Color(80, 255, 0));
     }
-    tone(D2, 3401, 500); //connect two to D2
-    tone(A5, 3817, 500);
-    tone(D2, 3817, 500);
-    tone(A5, 3401, 500); // connect two to A5
+    tone(A1, 3401, 500); //connect two to D2
+    tone(A0, 3817, 500);
+    tone(A1, 3817, 500);
+    tone(A0, 3401, 500); // connect two to A5
+    tone(D2, 2696, 500);
+    tone(D2, 1234, 500);
     matrix_1.show();
     delay(100);
     }
@@ -488,7 +492,23 @@ void mainFunction()
       matrix.show();
       rainbow(20);
   } else if(x<-9&&z<3.00&&y<3.00){
-    //function
+    matrix.fillScreen(0);
+    matrix.setCursor(x1, 0);
+    matrix.print("BOX");
+    if(--x1 < -36) {
+    x1 = matrix.width();
+    matrix.setTextColor(matrix.Color(80, 255, 0));
+    }
+    matrix_1.show();
+    matrix_1.fillScreen(0);
+    matrix_1.setCursor(x1, 0);
+    matrix_1.print("BOX");
+    if(--x1 < -36) {
+    x1 = matrix_1.width();
+    matrix_1.setTextColor(matrix_1.Color(80, 255, 0));
+    }
+    matrix_1.show();
+    delay(300);
   }
   }
 }
