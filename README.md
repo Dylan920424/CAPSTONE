@@ -1,10 +1,6 @@
 # CAPSTONE
 
-A Particle project named CAPSTONE
-
-## Welcome to your project!
-
-Every new Particle project is composed of 3 important elements that you'll see have been created in your project directory for CAPSTONE.
+Code to an IoT Smart Clock that I created. The clock connects to a phone application and changes functionality according to its orientation. It has the ability to display the time according to the user's timezone, display the weather, work as a table lamp and more. The orientation is measured through a 9DOF inside the clock compartment. 
 
 #### ```/src``` folder:  
 This is the source folder that contains the firmware files for your project. It should *not* be renamed. 
